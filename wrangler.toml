@@ -1,34 +1,28 @@
-# SENTRA Panel — Cloudflare Worker configuration
-# Everything runs on the Cloudflare free plan: one Worker, one D1 database, one KV namespace.
-
 name = "sentra-panel"
 main = "src/index.js"
 compatibility_date = "2026-01-15"
 compatibility_flags = ["nodejs_compat"]
 
-# ── Storage bindings (provisioned automatically with `wrangler deploy` or Deploy button) ──
+# شناسه‌ها عمداً خالی‌اند: Deploy button خودش می‌سازد و ID واقعی را می‌نویسد
 [[d1_databases]]
 binding = "DB"
 database_name = "sentra-db"
-database_id = "REPLACE_WITH_D1_ID"
+database_id = ""
+migrations_dir = "migrations"
 
 [[kv_namespaces]]
 binding = "KV"
-id = "REPLACE_WITH_KV_ID"
+id = ""
 
-# ── embed the vendored QR library as a text module ──
 [[rules]]
 type = "Text"
 globs = ["**/*.txt"]
 
-# ── Scheduled jobs ──
-# Daily: quota resets, expiry sweep, session cleanup, traffic flush
 [triggers]
 crons = ["0 3 * * *"]
 
-# ── Optional public vars (all sensitive values live in D1 settings, set via panel) ──
 [vars]
 APP_NAME = "SENTRA"
 DEFAULT_LANG = "fa"
-# Secret used for the Telegram webhook path; rotate any time.
+# این را به یک رشته تصادفی ۱۶ کاراکتری خودتان عوض کنید
 BOT_PATH_SECRET = "change-me-random-16-chars"
