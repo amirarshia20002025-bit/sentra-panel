@@ -1,0 +1,10 @@
+Vendored third-party code
+=========================
+
+src/vendor/qrcode.js.txt
+  qrcode-generator — © 2009 Kazuhiko Arase
+  License: MIT (https://opensource.org/licenses/mit-license.php)
+  Source: https://www.npmjs.com/package/qrcode-generator (v1.4.4)
+  Used only for QR rendering inside the self-service page and the admin panel.
+
+Everything else in SENTRA is original code, MIT licensed — see LICENSE.

@@ -1,0 +1,21 @@
+{
+  "name": "sentra-panel",
+  "version": "1.0.0",
+  "description": "SENTRA — original censorship-resistant proxy panel on a single free Cloudflare Worker (VLESS/Trojan/Shadowsocks, subscriptions, Telegram bot, admin dashboard).",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "db:init": "wrangler d1 execute sentra-db --local --file=schema.sql",
+    "db:init:remote": "wrangler d1 execute sentra-db --remote --file=schema.sql",
+    "check": "node --check src/index.js",
+    "test": "node test/run_tests.mjs",
+    "obfuscate": "node scripts/make-obfuscated.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "javascript-obfuscator": "^5.10.1",
+    "wrangler": "^4.0.0"
+  }
+}
